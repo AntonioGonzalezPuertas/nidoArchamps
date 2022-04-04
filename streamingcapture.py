@@ -19,9 +19,9 @@ class SC():
 
         self.W = 1280
         self.H = 720
-        self.TIME_LAPSE = 63
-        self.MORNING = 5
-        self.NIGHT = 21
+        self.TIME_LAPSE = 60
+        self.MORNING = 1
+        self.NIGHT = 52
         self.showVideo =True
 
         self.record_video=False
@@ -35,8 +35,8 @@ class SC():
     def take_picture(self):
         font = cv2.FONT_HERSHEY_SIMPLEX
 
-        hour= int(datetime.datetime.now().hour)
-
+        hour= int(datetime.datetime.now().minute)
+        print(hour)
         if (hour > self.MORNING and hour < self.NIGHT):
             try:
                 print("[INFO] opening streaming...", self.video_input)
