@@ -1,7 +1,3 @@
-import time
-import schedule
-import json
-
 
 class Scheduler():
     def __init__(self,mySC):
