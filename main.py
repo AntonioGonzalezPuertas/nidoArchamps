@@ -1,8 +1,5 @@
 
-import argparse
-import time
 import cv2
-import datetime
 import myScheduler
 import schedule
 import streamingcapture

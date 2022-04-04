@@ -1,8 +1,7 @@
 import os
 import cv2
 import datetime
-import time
-import numpy as np
+
 
 if os.name == 'nt':
     FORMAT_DIR = '\\' # Windows
@@ -19,7 +18,7 @@ class SC():
 
         self.W = 1280
         self.H = 720
-        self.TIME_LAPSE = 63
+        self.TIME_LAPSE = 60
         self.MORNING = 5
         self.NIGHT = 21
         self.showVideo =True
