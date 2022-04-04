@@ -9,7 +9,8 @@ if os.name == 'nt':
 else:
     FORMAT_DIR = '/' # Linux
 
-os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "rtsp_transport;udp"
+
+#os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "rtsp_transport;udp"
 
 class SC():
     def __init__(self):
