@@ -19,7 +19,7 @@ class SC():
 
         self.W = 1280
         self.H = 720
-        self.TIME_LAPSE = 60
+        self.TIME_LAPSE = 61
         self.MORNING = 5
         self.NIGHT = 21
         self.showVideo =True
