@@ -1,3 +1,7 @@
+import time
+import schedule
+import json
+
 
 class Scheduler():
     def __init__(self,mySC):
@@ -38,4 +42,5 @@ schedule.every().monday.do(good_luck)
 
 # Every tuesday at 18:00 sudo_placement() is called
 schedule.every().tuesday.at("18:00").do(sudo_placement)
+
 """
