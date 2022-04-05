@@ -43,12 +43,26 @@ def loop():
         if key == ord("2"):
             mySC.TIME_LAPSE = 120
 
+def click_event(event,x,y,flags,param):
+    if event == cv2.EVENT_LBUTTONDOWN:
+        mySC.record_video = True
+    elif event == cv2.EVENT_LBUTTONUP:
+        mySC.record_video = False
 
 
 
 def main():
+    cv2.namedWindow(mySC.WINDOW_NAME, cv2.WINDOW_NORMAL)
+    cv2.setWindowTitle(mySC.WINDOW_NAME, mySC.WINDOW_NAME)
+    if mySC.W and mySC.H:
+    	cv2.resizeWindow(mySC.WINDOW_NAME, mySC.W, mySC.H)
 
+    cv2.setMouseCallback(mySC.WINDOW_NAME,click_event)
+	
     loop()
+    
+    
+    
 
     # close any open windows
     cv2.destroyAllWindows()

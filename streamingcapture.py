@@ -9,13 +9,15 @@ else:
     FORMAT_DIR = '/' # Linux
 
 
+
 #os.environ["OPENCV_FFMPEG_CAPTURE_OPTIONS"] = "rtsp_transport;udp"
 
 class SC():
     def __init__(self):
 
         self.directory = os.path.dirname(os.path.abspath(__file__)) + FORMAT_DIR + r'output' + FORMAT_DIR
-
+        
+        self.WINDOW_NAME = 'Cameras'
         self.W = 1280
         self.H = 720
         self.TIME_LAPSE = 60
@@ -30,6 +32,7 @@ class SC():
         self.ti = 0
         self.vs = None
         self.resize_frame = None
+        
 
     def take_picture(self):
         font = cv2.FONT_HERSHEY_SIMPLEX
@@ -78,7 +81,7 @@ class SC():
 
                     # show the output frame
                     if self.showVideo:
-                        cv2.imshow("Frame", self.resize_frame) #Muestra el vídeo
+                        cv2.imshow(self.WINDOW_NAME, self.resize_frame) #Muestra el vídeo
 
             except cv2.error as e:
                 print("Error reading")
@@ -115,7 +118,7 @@ class SC():
             frame = vs.read()
             resize_frame = cv2.resize(frame[1], (self.W, self.H))
             writer.write(resize_frame)
-            cv2.imshow("Frame", resize_frame) #Muestra el vídeo
+            cv2.imshow(self.WINDOW_NAME, resize_frame) #Muestra el vídeo
             key = cv2.waitKey(1) & 0xFF
 
             if key == ord("q"):
