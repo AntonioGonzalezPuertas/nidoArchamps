@@ -7,15 +7,34 @@ class Scheduler():
     def __init__(self,mySC):
         self.mySC = mySC
         self.loadSchedule()
+        self.dayTask=None
+        self.nightTask=None
         # schedule.every(10).seconds.do(self.schedule_message,msg="hola").tag("title")
         # schedule.clear('title')
         #exec("schedule.every(10).seconds.do(self.reminder1)")
         pass
 
-    def launchSchedule(self,data):
+    def startDay(self):
+        print("Start day schedule:")
+        if self.nightTask != None:
+            print("Cancel night schedule")
+            schedule.cancel_job(self.nightTask)
+        self.dayTask= schedule.every(self.mySC.TIME_LAPSE_DAY_MINUTES).minutes.do(self.mySC.take_picture)
 
-        task= "schedule.every(" + data['time'] + ").seconds.do(self.schedule_task)"
-        exec(task)
+    def endDay(self):
+        print("Start night schedule:")
+        if self.dayTask != None:
+            print("Cancel day schedule")
+        schedule.cancel_job(self.dayTask)
+        self.nightTask= schedule.every(self.mySC.TIME_LAPSE_NIGHT_HOURS).hours.do(self.mySC.take_picture)
+
+    def launchSchedule(self,data):
+        self.dayTask= schedule.every(self.mySC.TIME_LAPSE_DAY_MINUTES).minutes.do(self.mySC.take_picture)
+        schedule.every().day.at(self.mySC.MORNING).do(self.startDay)
+        schedule.every().day.at(self.mySC.NIGHT).do(self.endDay)
+
+    #command= "schedule.every(" + data['time'] + ").seconds.do(self.schedule_task)"
+        #exec(command)
 
     def loadSchedule(self):
         task={'time':str(self.mySC.TIME_LAPSE) }

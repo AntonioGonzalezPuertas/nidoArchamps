@@ -13,10 +13,9 @@ myScheduler = myScheduler.Scheduler(mySC)
 def loop():
     # loop over frames from the video stream
 
-    print("Running Scheduler. TimeLapse:",str(mySC.TIME_LAPSE) + 'sec')
-    print("Between:", str(mySC.MORNING) + 'h' ,"and", str(mySC.NIGHT) + 'h')
+    print("Running Scheduler. TimeLapse:",str(mySC.TIME_LAPSE_DAY_MINUTES) + 'min')
+    print("Between:", str(mySC.MORNING)  ,"and", str(mySC.NIGHT) + 'h')
 
-    print("Picture taken")
     mySC.take_picture()
 
     while True:
