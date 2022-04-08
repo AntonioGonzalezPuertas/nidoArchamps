@@ -111,7 +111,8 @@ class SC():
                 key = cv2.waitKey(1) & 0xFF
 
                 if key == ord("r"):
-                    self.recordVideo()
+                    self.showVideo=False
+                    self.record_video=True
                 if key == ord("p"):
                     self.take_picture()
                 if key == ord("v"):
@@ -127,6 +128,10 @@ class SC():
                 self.vs =None
                 print("[INFO] Closing stream")
 
+        if self.record_video:
+            self.recordVideo()
+
+
 
     def recordVideo(self):
 
@@ -135,8 +140,7 @@ class SC():
             self.record_video=True
             while self.record_video:
                 if (writer == None):
-                    if not self.showVideo:
-                        self.vs = cv2.VideoCapture(self.video_input)
+                    self.vs = cv2.VideoCapture(self.video_input)
 
 
                     # if the frame dimensions are empty, set them
