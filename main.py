@@ -13,16 +13,13 @@ myScheduler = myScheduler.Scheduler(mySC)
 def loop():
     # loop over frames from the video stream
 
-    print("Running Scheduler. TimeLapse:",str(mySC.TIME_LAPSE_DAY_MINUTES) + 'min')
-    print("Between:", str(mySC.MORNING)  ,"and", str(mySC.NIGHT) + 'h')
+    print("[INFO] Running Scheduler. TimeLapse:",str(mySC.TIME_LAPSE_DAY_MINUTES) + 'min')
+    print("[INFO] Between:", str(mySC.MORNING)  ,"and", str(mySC.NIGHT) + 'h')
 
     mySC.take_picture()
 
     while True:
         schedule.run_pending()
-
-        if mySC.record_video:
-            mySC.recordVideo()
 
         key = cv2.waitKey(1) & 0xFF
 
@@ -31,16 +28,22 @@ def loop():
             break
 
         if key == ord("r"):
-            mySC.record_video = not mySC.record_video
-        if key == ord("s"):
-            mySC.showVideo = not mySC.showVideo
+            mySC.recordVideo()
+        if key == ord("p"):
+            mySC.take_picture()
+        if key == ord("v"):
+            mySC.liveVideo()
 
         if key == ord("0"):
-            mySC.TIME_LAPSE = 5
+            myScheduler.changeSchedule(999)
         if key == ord("1"):
-            mySC.TIME_LAPSE = 60
+            myScheduler.changeSchedule(1)
         if key == ord("2"):
-            mySC.TIME_LAPSE = 120
+            myScheduler.changeSchedule_sec(5)
+        if key == ord("3"):
+            myScheduler.changeSchedule_sec(10)
+        if key == ord("4"):
+            myScheduler.changeSchedule_sec(30)
 
 def click_event(event,x,y,flags,param):
     if event == cv2.EVENT_LBUTTONDOWN:

@@ -28,6 +28,16 @@ class Scheduler():
             schedule.cancel_job(self.dayTask)
         self.nightTask= schedule.every(self.mySC.TIME_LAPSE_NIGHT_HOURS).hours.do(self.mySC.take_picture)
 
+    def changeSchedule(self,timelapse):
+        print("Changing day schedule:", self.mySC.TIME_LAPSE_DAY_MINUTES , "min -", timelapse,"min")
+        schedule.cancel_job(self.dayTask)
+        self.dayTask= schedule.every(timelapse).minutes.do(self.mySC.take_picture)
+
+    def changeSchedule_sec(self,timelapse):
+        print("Changing day schedule:", self.mySC.TIME_LAPSE_DAY_MINUTES , "min -", timelapse,"sec")
+        schedule.cancel_job(self.dayTask)
+        self.dayTask= schedule.every(timelapse).seconds.do(self.mySC.take_picture)
+
     def launchSchedule(self):
         self.dayTask= schedule.every(self.mySC.TIME_LAPSE_DAY_MINUTES).minutes.do(self.mySC.take_picture)
         schedule.every().day.at(self.mySC.MORNING).do(self.startDay)
