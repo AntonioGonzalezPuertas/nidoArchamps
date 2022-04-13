@@ -24,7 +24,7 @@ class SC():
         self.TIME_LAPSE_DAY_MINUTES = 1
         self.TIME_LAPSE_NIGHT_HOURS = 1
         self.MORNING = "06:00"
-        self.NIGHT = "21:30"
+        self.NIGHT = "22:00"
         self.showVideo =False
 
         self.record_video=False
