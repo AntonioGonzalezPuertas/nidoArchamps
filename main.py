@@ -51,7 +51,7 @@ def loop():
 
 def click_event(event,x,y,flags,param):
     if event == cv2.EVENT_LBUTTONDOWN:
-        mySC.record_video = True
+        mySC.recordVideo()
     elif event == cv2.EVENT_LBUTTONUP:
         mySC.record_video = False
 
