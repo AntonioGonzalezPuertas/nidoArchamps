@@ -33,6 +33,10 @@ def loop():
             mySC.take_picture()
         if key == ord("v"):
             mySC.liveVideo()
+        if key == ord("d"):
+            myScheduler.startDay()
+        if key == ord("n"):
+            myScheduler.endDay()
 
         if key == ord("0"):
             myScheduler.changeSchedule(999)
